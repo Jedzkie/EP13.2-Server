@@ -1,0 +1,272 @@
+prontera,105,81,5	script	Dinorah Lacostt#prt	4_F_LGTGIRL,{
+	mes "[Stylist Dinorah Lacostt]";
+	mes "Heeeeeello~wooooooooo. I am";
+	mes "a stylist who can change your";
+	mes "clothes to match your";
+	mes "unique style~ Uh-huh!";
+	next;
+	mes "[Stylist Dinorah Lacostt]";
+	mes "If you give me a";
+	mes "^FF0000"+getitemname(F_Clothing_Dye_Coupon)+"^000000,";
+	mes "I'll change the color of your clothes to one of 3 color variations.~";
+	next;
+	mes "[Stylist Dinorah Lacostt]";
+	mes "Ah, You should be advised that";
+	mes "^FF0000if you change your job";
+	mes "^FF0000after you've dyed your clothes,^000000";
+	mes "^FF0000the original color will be shown^000000";
+	mes "^FF0000 on the screen. But if you relog,^000000";
+	mes "^FF0000you can see the dyed color again.^000000";
+	next;
+	mes "[Stylist Dinorah Lacostt]";
+	mes "^FF0000And one more thing!!";
+	mes "^FF0000We have only one color for";
+	mes "^FF0000each job class.";
+	next;
+	mes "[Stylist Dinorah Lacostt]";
+	mes "Uh-huh~ Now, I told you everything.";
+	mes "Tell me what you want~";
+	next;
+	switch(select("Dye clothes.:Dye Options:Stop talking.")){
+	case 1:
+		mes "[Stylist Dinorah Lacostt]";
+		mes "Good choice~ I'll do it~";
+		mes "very~very~ quickly~.";
+		mes "Haaap!";
+		next;
+		switch(select("Original Dye:Option 1:Option 2:Cancel")){
+		case 1:
+			if(countitem(F_Clothing_Dye_Coupon) < 1){
+				mes "[Stylist Dinorah Lacostt]";
+				mes "Oh, my~";
+				mes "Where is your "+getitemname(F_Clothing_Dye_Coupon)+"?";
+				mes "I simply can't do anything without that.";
+				close;
+			}
+			mes "[Stylist Dinorah Lacostt]";
+			mes "Huu~ It's done very";
+			mes "quickly~. Isn't it pretty?~";
+			mes "From now~ swagger on the street";
+			mes "with this beautiful clothes~";
+			delitem F_Clothing_Dye_Coupon,1;
+			setlook VAR_BODYPALETTE,1;
+			close;
+		case 2:
+			if(countitem(F_Clothing_Dye_Coupon) < 1){
+				mes "[Stylist Dinorah Lacostt]";
+				mes "Oh, my~";
+				mes "Where is your "+getitemname(F_Clothing_Dye_Coupon)+"?";
+				mes "I simply can't do anything without that.";
+				close;
+			}
+			mes "[Stylist Dinorah Lacostt]";
+			mes "Huu~ It's done very";
+			mes "quickly~. Isn't it pretty?~";
+			mes "From now~ swagger on the street";
+			mes "with this beautiful clothes~";
+			delitem F_Clothing_Dye_Coupon,1;
+			setlook VAR_BODYPALETTE,2;
+			close;
+		case 3:
+			if(countitem(F_Clothing_Dye_Coupon) < 1){
+				mes "[Stylist Dinorah Lacostt]";
+				mes "Oh, my~";
+				mes "Where is your "+getitemname(F_Clothing_Dye_Coupon)+"?";
+				mes "I simply can't do anything without that.";
+				close;
+			}			
+			mes "[Stylist Dinorah Lacostt]";
+			mes "Huu~ It's done very";
+			mes "quickly~. Isn't it pretty?~";
+			mes "From now~ swagger on the street";
+			mes "with this beautiful clothes~";
+			delitem F_Clothing_Dye_Coupon,1;
+			setlook VAR_BODYPALETTE,3;
+			close;
+		case 4:
+			mes "[Stylist Dinorah Lacostt]";
+			mes "Come back to me if you change your mind ok?";
+			close;
+		}
+	case 2:
+		mes "[Stylist Dinorah Lacostt]";
+		mes "What class do you want to see the option for?";
+		next;
+		if(select("Show me my class options:Other Classes") == 1){
+			mes "[Stylist Dinorah Lacostt]";
+			mes "Ok hmm let me see what class you are first...";
+			next;
+			if(Class == Job_Novice) || (Class == Job_Novice_High){
+				cutin "excolor_novice",4;
+			} else if(Class == Job_Swordman) || (Class == Job_Swordman_High){
+				cutin "excolor_swordman",4;
+			} else if(Class == Job_Mage) || (Class == Job_Mage_High){
+				cutin "excolor_magician",4;
+			} else if(Class == Job_Archer) || (Class == Job_Archer_High){
+				cutin "excolor_archer",4;
+			} else if(Class == Job_Acolyte) || (Class == Job_Acolyte_High){
+				cutin "excolor_acolyte",4;
+			} else if(Class == Job_Merchant) || (Class == Job_Merchant_High){
+				cutin "excolor_merchant",4;
+			} else if(Class == Job_Thief) || (Class == Job_Thief_High){
+				cutin "excolor_thief",4;
+			} else if(Class == Job_Knight) || (Class == Job_Knight2){
+				cutin "excolor_knight",4;
+			} else if(Class == Job_Crusader) || (Class == Job_Crusader2){
+				cutin "excolor_crusader",4;
+			} else if(Class == Job_Lord_Knight) || (Class == Job_Lord_Knight2){
+				cutin "excolor_loadknight",4;
+			} else if(Class == Job_Paladin) || (Class == Job_Paladin2){
+				cutin "excolor_paladin",4;
+			} else if(Class == Job_Wizard){
+				cutin "excolor_wizard",4;
+			} else if(Class == Job_High_Wizard){
+				cutin "excolor_highwizard",4;
+			} else if(Class == Job_Sage){
+				cutin "excolor_sage",4;
+			} else if(Class == Job_Professor){
+				cutin "excolor_professor",4;
+			} else if(Class == Job_Hunter){
+				cutin "excolor_hunter",4;
+			} else if(Class == Job_Sniper){
+				cutin "excolor_sniper",4;
+			} else if(Class == Job_Bard) || (Class == Job_Dancer){
+				cutin "excolor_bard_dancer",4;
+			} else if(Class == Job_Clown) || (Class == Job_Gypsy){
+				cutin "excolor_clown_gypsy",4;
+			} else if(Class == Job_Priest){
+				cutin "excolor_priest",4;
+			} else if(Class == Job_High_Priest){
+				cutin "excolor_highpriest",4;
+			} else if(Class == Job_Monk){
+				cutin "excolor_monk",4;
+			} else if(Class == Job_Champion){
+				cutin "excolor_champion",4;
+			} else if(Class == Job_Blacksmith){
+				cutin "excolor_blacksmith",4;
+			} else if(Class == Job_Whitesmith){
+				cutin "excolor_whitesmith",4;
+			} else if(Class == Job_Alchemist){
+				cutin "excolor_alchemist",4;
+			} else if(Class == Job_Creator){
+				cutin "excolor_creator",4;
+			} else if(Class == Job_Assassin){
+				cutin "excolor_assassin",4;
+			} else if(Class == Job_Assassin_Cross){
+				cutin "excolor_assassincross",4;
+			} else if(Class == Job_Rogue){
+				cutin "excolor_rogue",4;
+			} else if(Class == Job_Stalker){
+				cutin "excolor_chaser",4;
+			} else if(Class == Class_SuperNovice){
+				cutin "excolor_supernovice",4;
+			} else if(Class == Job_Gunslinger){
+				cutin "excolor_gunslinger",4;
+			} else if(Class == Job_Ninja){
+				cutin "excolor_ninja",4;
+			} else if(Class == Job_Taekwon){
+				cutin "excolor_taekwon",4;
+			} else if(Class == Job_Star_Gladiator) || (Class == Job_Star_Gladiator2){
+				cutin "excolor_kwonsung",4;
+			} else if(Class == Job_Soul_Linker){
+				cutin "excolor_soullinker",4;
+			}
+			mes "[Stylist Dinorah Lacostt]";
+			mes "Ok, let me show you what your clothing dye options are.";
+			mes "Here you go!";
+			close2;
+			sleep2 200;
+			cutin "",255;
+			end;
+		}
+		Dye_Menu:
+		switch(select("Acolyte Class:Archer Class:Magician Class:Merchant Class:Novice Class:Swordsman Class:Thief Class:Taekwon Class:Gunslinger:Ninja")){
+		case 1:
+			cutin "excolor_acolyte",4;
+			mes "[Stylist Dinorah Lacostt]";
+			mes "Ok, for a Acolyte and High Acolyte here are the dye options.";
+			close2;
+			sleep2 200;
+			cutin "",255;
+			goto Dye_Menu;
+			end;
+		case 2:
+			cutin "excolor_archer",4;
+			mes "[Stylist Dinorah Lacostt]";
+			mes "Ok, for a Archer and High Archer here are the dye options.";
+			close2;
+			sleep2 200;
+			cutin "",255;
+			goto Dye_Menu;
+			end;
+		case 3:
+			cutin "excolor_magician",4;
+			mes "[Stylist Dinorah Lacostt]";
+			mes "Ok, for a Magician and High Magician here are the dye options.";
+			close2;
+			sleep2 200;
+			cutin "",255;
+			goto Dye_Menu;
+			end;
+		case 4:
+			cutin "excolor_merchant",4;
+			mes "[Stylist Dinorah Lacostt]";
+			mes "Ok, for a Merchant and High Merchant here are the dye options.";
+			close2;
+			sleep2 200;
+			cutin "",255;
+			goto Dye_Menu;
+			end;
+		case 5:
+			cutin "excolor_novice",4;
+			mes "[Stylist Dinorah Lacostt]";
+			mes "Ok, for a Novice and High Novice here are the dye options.";
+			close2;
+			sleep2 200;
+			cutin "",255;
+			goto Dye_Menu;
+			end;
+		case 6:
+			cutin "excolor_swordman",4;
+			mes "[Stylist Dinorah Lacostt]";
+			mes "Ok, for a Swordsman and High Swordsman here are the dye options.";
+			close2;
+			sleep2 200;
+			cutin "",255;
+			goto Dye_Menu;
+			end;
+		case 7:
+			cutin "excolor_thief",4;
+			mes "[Stylist Dinorah Lacostt]";
+			mes "Ok, for a Thief and High Thief here are the dye options.";
+			close2;
+			sleep2 200;
+			cutin "",255;
+			goto Dye_Menu;
+			end;			
+		case 8:
+			cutin "excolor_taekwon",4;
+			mes "[Stylist Dinorah Lacostt]";
+			mes "Ok, for a Taekwon here are the dye options.";
+			next;
+			cutin "excolor_kwonsung",4;
+			mes "[Stylist Dinorah Lacostt]";	
+			mes "And for a Star Gladiator here are the dye options.";
+			next;
+			cutin "excolor_soullinker",4;
+			mes "[Stylist Dinorah Lacostt]";	
+			mes "And lastly, for a Star Gladiator here are the dye options.";
+			close2;
+			sleep2 200;
+			cutin "",255;
+			goto Dye_Menu;
+			end;
+		case 9:
+			close;
+		}
+	case 3:
+		mes "[Stylist Dinorah Lacostt]";
+		mes "Visit me again if you change your mind~~";
+		close;
+	}
+}

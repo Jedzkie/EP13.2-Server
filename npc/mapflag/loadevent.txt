@@ -1,0 +1,34 @@
+//===== Hercules Script ======================================
+//= Mapflag: Loadevent.
+//===== By: ==================================================
+//= Epoque
+//===== Current Version: =====================================
+//= 1.0a
+//===== Description: =========================================
+//= Triggers special script commands.
+//===== Additional Comments: =================================
+//= 1.0 - Initial script.
+//============================================================
+
+prontera	mapflag	loadevent
+izlude	mapflag	loadevent
+moc_ruins	mapflag	loadevent
+geffen	mapflag	loadevent
+payon	mapflag	loadevent
+pay_arche	mapflag	loadevent
+alberta	mapflag	loadevent
+aldebaran	mapflag	loadevent
+yuno	mapflag	loadevent
+lighthalzen	mapflag	loadevent
+einbroch	mapflag	loadevent
+einbech	mapflag	loadevent
+comodo	mapflag	loadevent
+umbala	mapflag	loadevent
+amatsu	mapflag	loadevent
+gonryun	mapflag	loadevent
+ayothaya	mapflag	loadevent
+louyang	mapflag	loadevent
+hugel	mapflag	loadevent
+rachel	mapflag	loadevent
+veins	mapflag	loadevent
+moc_para01	mapflag	loadevent

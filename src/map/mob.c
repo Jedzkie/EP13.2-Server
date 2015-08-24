@@ -2350,7 +2350,7 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type) {
 					drop_rate += status_get_luk(src) * battle_config.drops_by_luk / 100;
 				//Drops affected by luk as a % increase [Skotlex]
 				if (battle_config.drops_by_luk2)
-					drop_rate += (int)(0.5 + drop_rate *s tatus_get_luk(src) * battle_config.drops_by_luk2 / 10000.);
+					drop_rate += (int)(0.5 + drop_rate * status_get_luk(src) * battle_config.drops_by_luk2 / 10000.);
 			}
 			if (sd && battle_config.pk_mode &&
 				(int)(md->level - sd->status.base_level) >= 20)

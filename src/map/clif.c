@@ -17647,7 +17647,7 @@ void clif_bank_deposit(struct map_session_data *sd, enum e_BANKING_DEPOSIT_ACK r
 
 	clif->send(&p,sizeof(p), &sd->bl, SELF);
 }
-void clif_bank_withdraw(struct map_session_data *sd,enum e_BANKING_WITHDRAW_ACK reason) {
+void clif_bank_withdraw(struct map_session_data *sd, enum e_BANKING_WITHDRAW_ACK reason) {
 	struct packet_banking_withdraw_ack p;
 
 	p.PacketType = banking_withdraw_ackType;

@@ -5640,62 +5640,36 @@ int char_config_read(const char* cfgName)
 				ShowError("Specified start_point %s not found in map-index cache.\n", map);
 			start_point.x = x;
 			start_point.y = y;
-		} else if (strcmpi(w1, "start_items") == 0) {
-			int i;
-			char *split;
-
-			i = 0;
-			split = strtok(w2, ",");
-			while (split != NULL && i < MAX_START_ITEMS*3) {
-				char *split2 = split;
-				split = strtok(NULL, ",");
-				start_items[i] = atoi(split2);
-
-				if (start_items[i] < 0)
-					start_items[i] = 0;
-
-				++i;
-			}
-
-			// Format is: id1,quantity1,stackable1,idN,quantityN,stackableN
-			if( i%3 )
-			{
-				ShowWarning("chr->config_read: There are not enough parameters in start_items, ignoring last item...\n");
-				if( i%3 == 1 )
-					start_items[i-1] = 0;
-				else
-					start_items[i-2] = 0;
-			}
 		} else if (strcmpi(w1, "start_zeny") == 0) {
 			start_zeny = atoi(w2);
 			if (start_zeny < 0)
 				start_zeny = 0;
-+		} else if (strcmpi(w1, "start_items") == 0) {
-+			int i = 0;
-+			char *line_item, **fields;
-+			int fields_length = 3 + 1;
-+			fields = (char**)aMalloc(fields_length * sizeof(char*));
-+
-+			line_item = strtok(w2, ":");
-+			while (line_item != NULL) {
-+				int n = sv_split(line_item, strlen(line_item), 0, ',', fields, fields_length, SV_NOESCAPE_NOTERMINATE);
-+				if(n + 1 < fields_length){
-+					ShowDebug("start_items: not enough arguments for %s! Skipping...\n", line_item);
-+					line_item = strtok(NULL, ":");
-+					continue;
-+				}
-+				if(i > MAX_START_ITEMS){
-+					ShowDebug("start_items: too many items, only %d are allowed! Ignoring parameter %s...\n", MAX_START_ITEMS, line_item);
-+				} else {
-+					start_items[i].nameid = max(0, atoi(fields[1]));
-+					start_items[i].amount = max(0, atoi(fields[2]));
-+					start_items[i].pos = max(0, atoi(fields[3]));
-+				}
-+				line_item = strtok(NULL, ":");
-+				i++;
-+			}
-+			aFree(fields);
-+		} else if(strcmpi(w1,"log_char") == 0) {
+		} else if (strcmpi(w1, "start_items") == 0) {
+			int i = 0;
+			char *line_item, **fields;
+			int fields_length = 3 + 1;
+			fields = (char**)aMalloc(fields_length * sizeof(char*));
+
+			line_item = strtok(w2, ":");
+			while (line_item != NULL) {
+				int n = sv_split(line_item, strlen(line_item), 0, ',', fields, fields_length, SV_NOESCAPE_NOTERMINATE);
+				if(n + 1 < fields_length){
+					ShowDebug("start_items: not enough arguments for %s! Skipping...\n", line_item);
+					line_item = strtok(NULL, ":");
+					continue;
+				}
+				if(i > MAX_START_ITEMS){
+					ShowDebug("start_items: too many items, only %d are allowed! Ignoring parameter %s...\n", MAX_START_ITEMS, line_item);
+				} else {
+					start_items[i].nameid = max(0, atoi(fields[1]));
+					start_items[i].amount = max(0, atoi(fields[2]));
+					start_items[i].pos = max(0, atoi(fields[3]));
+				}
+				line_item = strtok(NULL, ":");
+				i++;
+			}
+			aFree(fields);
+		} else if(strcmpi(w1,"log_char") == 0) {
 			log_char = atoi(w2); //log char or not [devil]
 		} else if (strcmpi(w1, "unknown_char_name") == 0) {
 			safestrncpy(unknown_char_name, w2, sizeof(unknown_char_name));

@@ -1017,7 +1017,7 @@ ACMD(jobchange) {
 		return true;
 	}
 
-	if ( pcdb_checkid(job) ) {
+	if (pc->db_checkid(job)) {
 		if ( job & JOBL_UPPER || upper == 1 ) {
 			clif->message(fd, msg_txt(155)); // You are unable to change your job.
 			return false;
