@@ -1,0 +1,122 @@
+// Reproduce Copy Skills List
+//
+// ##TODO## screw this file and make it a new skill_info2 flag
+//
+// Structure of Database:
+// SkillID
+//=================================
+
+//Swordsman
+5	//Bash
+7	//Magnum Break
+
+//Mage
+11	// Napalm Beat
+13	// Soul Strike
+14	// Cold Bolt
+15	// Frost Diver
+17	// Fire Ball
+18	// Fire Wall
+19	// Fire Bolt
+20	// Lightning Bolt
+21	// Thunderstorm
+
+//Acolyte
+24	// Ruwach
+28	// Heal
+
+//Merchant
+42	// Mammonite
+
+//Archer
+46	// Double Strafe
+47	// Arrow Shower
+
+//Thief
+52	// Envenom
+
+// Resurrection
+54	// Resurrection
+
+// Knight
+62	// Bowling Bash
+
+// Priest
+68	// Asperio
+69	// B.S Sacramenti
+70	// Sanctuary
+77	// Turn Undead
+79	// Magnus Exorcismus
+
+// Wizard
+80	// Fire Pillar
+81	// Sightrasher
+83	// Meteor Storm
+84	// Jupitel Thunder
+85	// Lord of Vermillion
+86	// Water Ball
+88	// Frost Nova
+89	// Storm Gust
+90	// Earth Spike
+91	// Heaven's Drive
+
+// Hunter
+116	// Land Mine
+121	// Freezing Trap
+122	// Blast Mine
+123	// Claymore Trap
+
+// Assassin
+141	// Venom Splasher
+
+// 1st Job Quest Skills
+148	// Arrow Repel
+152	// Stone Fling
+156	// Holy Light
+
+// Rogue
+212	// Backstab
+
+// Alchemist
+229	// Bomb
+230	// Acid Terror
+
+// Crusader
+250	// Smite
+251	// Shield Boomerang
+253	// Holy Cross
+254	// Grand Cross
+
+// Monk
+263	// Raging Trifecta Blow
+266	// Occult Impaction
+267	// Throw Spirit Sphere
+271	// Guillotine Fist
+272	// Raging Quadruple Blow
+
+// Item Skill
+337	// Tomahawk Throwing
+
+// TaeKwon Kid
+421	// Flying Kick
+
+// Ninja
+526	// Throw Coins
+527	// Flip Tatami
+528	// Haze Slasher
+529	// Shadow Slash
+531	// Blaze Shield
+534	// Flaming Petals
+536	// Exploding Dragon
+537	// Freezing Spear
+539	// Snow Flake Draft
+540	// Wind Blade
+541	// Lightning Jolt
+542	// First Wind
+
+// 2nd Job Quest Skills
+1001	// Charge Attack
+1004	// Venom Knife
+1006	// Sight Blaster
+1009	// Phantasmic Arrow
+1015	// Excruciating Palm

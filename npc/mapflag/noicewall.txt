@@ -1,0 +1,70 @@
+//===== Hercules Script ======================================
+//= Mapflag: Disable Ice Wall.
+//===== By: ==================================================
+//= Hercules Dev Team
+//===== Current Version: =====================================
+//= 1.8
+//===== Description: =========================================
+//= Blocks usage of WZ_ICEWALL.
+//===== Additional Comments: =================================
+//= 1.6a - Re-enabled icewalls for cities [Lupus]
+//= 1.7 - Officially icewall is allowed on interiors. [L0ne_w0lf]
+//= 1.8 - Fixed arug_cas map names.
+//============================================================
+
+// Guild Castles ==========
+aldeg_cas01	mapflag	noicewall
+aldeg_cas02	mapflag	noicewall
+aldeg_cas03	mapflag	noicewall
+aldeg_cas04	mapflag	noicewall
+aldeg_cas05	mapflag	noicewall
+gefg_cas01	mapflag	noicewall
+gefg_cas02	mapflag	noicewall
+gefg_cas03	mapflag	noicewall
+gefg_cas04	mapflag	noicewall
+gefg_cas05	mapflag	noicewall
+payg_cas01	mapflag	noicewall
+payg_cas02	mapflag	noicewall
+payg_cas03	mapflag	noicewall
+payg_cas04	mapflag	noicewall
+payg_cas05	mapflag	noicewall
+prtg_cas01	mapflag	noicewall
+prtg_cas02	mapflag	noicewall
+prtg_cas03	mapflag	noicewall
+prtg_cas04	mapflag	noicewall
+prtg_cas05	mapflag	noicewall
+schg_cas01	mapflag	noicewall
+schg_cas02	mapflag	noicewall
+schg_cas03	mapflag	noicewall
+schg_cas04	mapflag	noicewall
+schg_cas05	mapflag	noicewall
+arug_cas01	mapflag	noicewall
+arug_cas02	mapflag	noicewall
+arug_cas03	mapflag	noicewall
+arug_cas04	mapflag	noicewall
+arug_cas05	mapflag	noicewall
+// Novice Guild Castles ===
+nguild_alde	mapflag	noicewall
+nguild_gef	mapflag	noicewall
+nguild_pay	mapflag	noicewall
+nguild_prt	mapflag	noicewall
+
+//Endless Tower ==================
+1@tower	mapflag	noicewall
+2@tower	mapflag	noicewall
+3@tower	mapflag	noicewall
+4@tower	mapflag	noicewall
+5@tower	mapflag	noicewall
+6@tower	mapflag	noicewall
+
+// Orc's Memory ===================
+1@orcs	mapflag	noicewall
+2@orcs	mapflag	noicewall
+
+// Nidhoggr's Instance ===========
+1@nyd	mapflag	noicewall
+2@nyd	mapflag	noicewall
+
+// Poring War ====================
+poring_w01	mapflag	noicewall
+poring_w02	mapflag	noicewall
