@@ -328,7 +328,6 @@ spl_in02	mapflag	nobranch
 // Paradise ===========
 moc_para01	mapflag	nobranch
 
-
 // Poring War ==================
 poring_w01	mapflag	nobranch
 poring_w02	mapflag	nobranch

@@ -11,6 +11,7 @@
 //============================================================
 
 prontera	mapflag	loadevent
+prt_castle	mapflag	loadevent
 izlude	mapflag	loadevent
 moc_ruins	mapflag	loadevent
 geffen	mapflag	loadevent
