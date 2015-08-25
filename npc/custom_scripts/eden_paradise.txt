@@ -75,7 +75,7 @@
 	}
 	
 OnInit:
-	questinfo 29995|1111, QTYPE_QUEST, 0;
+	questinfo 29995|1000, QTYPE_QUEST, 0;
 	end;
 	
 OnPCLoadMapEvent:
@@ -170,11 +170,12 @@ prt_castle,161,169,5	script	Stephen#eden_bro	4_M_NFMAN,{
 		mes "Is this from my sister?";
 		mes "I didnt expect this!";
 		mes "Thank you so much my friend,";
-		mes "If you going back again to her, please give this.";
-		close2;
+		next;
 		setquest 29996;
 		getitem Traditional_Cookie,1;
-		end;
+		mes "[Stephen]";
+		mes "If you going back again to her, please give this.";
+		close;
 	}
 	if(questprogress(29996) == 1){
 		mes "[Stephen]";
