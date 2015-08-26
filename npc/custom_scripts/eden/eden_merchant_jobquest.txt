@@ -1,0 +1,8 @@
+// - Merchant Instructor
+moc_para01,14,80,5	script	Merchant Instructor#para	1_M_SIGNMCNT,{
+	end;
+
+OnInit:
+	questinfo 29004, QTYPE_JOB, 0, Job_Novice;
+	end;
+}

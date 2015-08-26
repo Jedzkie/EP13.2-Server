@@ -1,0 +1,7 @@
+// - Ninja Instructor
+moc_para01,18,97,5	script	Ninja Instructor#ed	4_M_NINJA_RED,{
+	end;
+OnInit:
+	questinfo 29006, QTYPE_JOB, 0, Job_Novice;
+	end;
+}

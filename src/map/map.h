@@ -32,7 +32,7 @@ enum E_MAPSERVER_ST {
 #define LOOTITEM_SIZE 10
 #define MAX_MOBSKILL 50
 #define MAX_MOB_LIST_PER_MAP 100
-#define MAX_EVENTQUEUE 2
+#define MAX_EVENTQUEUE 10
 #define MAX_EVENTTIMER 32
 #define NATURAL_HEAL_INTERVAL 500
 #define MIN_FLOORITEM 2
@@ -591,6 +591,8 @@ struct questinfo {
 	int quest_id;
 	bool hasJob;
 	unsigned short job;/* perhaps a mapid mask would be most flexible? */
+	bool hasLevel;
+	unsigned int level;
 };
 
 

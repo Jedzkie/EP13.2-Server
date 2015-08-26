@@ -1,0 +1,8 @@
+// - Acolyte Instructor
+moc_para01,14,83,5	script	Acolyte Instructor#para	4_F_ACOLYTE,{
+	end;
+
+OnInit:
+	questinfo 29003, QTYPE_JOB, 0, Job_Novice;
+	end;
+}

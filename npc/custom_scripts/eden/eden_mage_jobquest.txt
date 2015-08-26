@@ -1,0 +1,8 @@
+// - Mage Instructor
+moc_para01,14,89,5	script	Mage Instructor#para	4_F_GEFFEN_FAY,{
+	end;
+
+OnInit:
+	questinfo 29001, QTYPE_JOB, 0, Job_Novice;
+	end;
+}

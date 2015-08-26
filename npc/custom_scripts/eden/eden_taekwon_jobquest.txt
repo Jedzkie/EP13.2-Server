@@ -1,0 +1,8 @@
+// - Taekwon Instructor
+moc_para01,24,97,5	script	Taekwon Instructor#ed	4_F_TAEKWON,{
+	end;
+
+OnInit:
+	questinfo 29008, QTYPE_JOB, 0, Job_Novice;
+	end;
+}

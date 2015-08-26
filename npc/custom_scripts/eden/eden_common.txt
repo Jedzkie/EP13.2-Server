@@ -1,3 +1,127 @@
+moc_para01,27,35,5	script	Secretary Lime Evenor	4_F_EDEN_OFFICER,{
+	if (checkweight(1201,1) == 0 || (MaxWeight - Weight) < 2000) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	mes "[Lime Evenor]";
+	mes "People who follow their dreams and romances listen to me. We are representatives of the paradise called 'The garden of Eden' called the Eden group . There is no place like this anywhere.";
+	mes "Hello. Can I help you?";
+	next;
+	while (1) {
+		switch (select("What is Eden group?:Join the Eden Group.:Search for missions.:Cancel.")) {
+		case 1:
+			mes "[Lime Evenor]";
+			mes "Eden Group is a group that helps people who are suffering from distresses in Rune-Midgard.";
+			next;
+			mes "[Lime Evenor]";
+			mes "If people need help, we put up the case on the bulletin board and introduce it to our members who are eager to help those in need.";
+			next;
+			mes "[Lime Evenor]";
+			mes "Eden members will review the missions and help those who post them up.";
+			mes "Members do these missions for rewards.";
+			next;
+			mes "[Lime Evenor]";
+			mes "If you are not too familiar with Rune-Midgard, this is a great way to explore the world.";
+			mes "Or, if you are mature enough, you can travel the world and make new friends while doing missions. Your honorable name will be spread out among lands.";
+			next;
+			break;
+		case 2:
+			if (countitem(Para_Team_Mark) < 1) {
+				setquest 29997;
+				mes "[Lime Evenor]";
+				mes "You can be a Eden's member by simply registering with me.";
+				mes "Would you like to join Eden Group?";
+				next;
+				switch (select("Yes, I want to join.:No, I don't want to join.")) {
+				case 1:
+					mes "[Lime Evenor]";
+					mes "Aright. Excellent! Please write down your name here.";
+					input .@input$;
+					next;
+					mes "[Lime Evenor]";
+					mes "Are you done?";
+					mes "Let me see.";
+					next;
+					mes "[Lime Evenor]";
+					mes "Your name is ^3131FFBo"+.@input$+"Ba^000000...? Is that right?";
+					mes "Huh? Isn't it??";
+					next;
+					emotion e_swt;
+					mes "[Lime Evenor]";
+					mes "Hmm, that isn't what you wrote?";
+					mes "Ok, hmm, it seems a bit hard to read.";
+					next;
+					mes "[Lime Evenor]";
+					mes "Would you please write your name again? Please write it ^3131FFClearly^000000.";
+					input .@input$;
+					next;
+					mes "[Lime Evenor]";
+					mes "Ah~ ha. You are ^3131FF"+strcharinfo(0)+"^000000.";
+					mes "I got it right this time.";
+					next;
+					emotion e_no1;
+					mes "[Lime Evenor]";
+					mes "We already put your name on the list.";
+					mes "Welcome to Eden's group new member!";
+					next;
+					completequest 29997;
+					doevent "#warp_2_pub::OnEdenWarp_L1";
+					doevent "#warp_2_2f::OnEdenWarp_L2";
+					doevent "#warp_2_eqp_room::OnEdenWarp_L3";
+					doevent "#warp_2_gym::OnEdenWarp_L4";
+					doevent "#warp_2_ware::OnEdenWarp_L5";
+					doevent "#warp_2_room2::OnEdenWarp_L6";
+					mes "[Lime Evenor]";
+					mes "Hopefully you can do great work as an Eden's member.";
+					getitem Para_Team_Mark,1;
+					getexp 20,20;
+					next;
+					break;
+				case 2:
+					mes "[Lime Evenor]";
+					mes "Do you still have questions about Eden Group?";
+					next;
+					break;
+				}
+			} else {
+				mes "[Lime Evenor]";
+				mes "You are already a member of Eden Group.";
+				next;
+			}
+			break;
+		case 3:
+			if (countitem(Para_Team_Mark) > 0) {
+				mes "[Lime Evenor]";
+				mes "Would like to try some missions as an Eden member?";
+				next;
+				mes "[Lime Evenor]";
+				mes "Check the right side of the bulletin board, there are various kinds of missions waiting for you.";
+				mes "Please carefully read the mission list and the qualifications and choose one of them.";
+				next;
+			}
+			else {
+				mes "[Lime Evenor]";
+				mes "You need to join Eden Group first if you want to do some missions.";
+				close;
+			}
+			break;
+		case 4:
+			mes "[Lime Evenor]";
+			mes "If you have any questions please come back again.";
+			close;
+		}
+	}
+	close;
+	
+OnInit:
+	questinfo 29997, QTYPE_QUEST, 0;
+	end;
+}
+
 -	script	Eden Teleport Officer#0::eto	-1,{
 	if(questprogress(29995) == 0 || eden_name == 0){
 		mes "[Eden Teleport Officer]";
@@ -30,7 +154,9 @@
 		mes "Please give this to my Brother in Prontera Castle.";
 		mes "Its been a long time since my last letter to him.";
 		mes "Good Luck to you!";
-		close;
+		close2;
+		doevent "#prt005::OnWarpQuest";
+		end;
 	}
 	if(questprogress(29995) == 1){
 		emotion e_swt;
@@ -41,6 +167,7 @@
 	}
 	if(questprogress(29996) == 1){
 		completequest 29996;
+		getexp 15,15;
 		delitem Traditional_Cookie,1;
 		mes "[Eden Teleport Officer]";
 		mes "Wow! Cookies from my brother?";
@@ -146,7 +273,7 @@ OnTouch:
 		case 24: warp "louyang",217,103; end;
 		case 25: warp "gonryun",155,120; end;
 		case 26: warp "moscovia",218,198; end;
-		case 27: warp "morocc",161,97; end;
+		case 27: warp "morocc",159,90; end;
 		case 28: warp "izlude",127,142; end;
 		case 29: warp "umbala",94,154; end;
 		default: warp "prontera",116,72; end;
@@ -165,6 +292,7 @@ prt_castle,161,169,5	script	Stephen#eden_bro	4_M_NFMAN,{
 		completequest 29995;
 		delitem Sister_Letter,1;
 		showevent QTYPE_NONE;
+		getexp 10,10;
 		mes "[Stephen]";
 		mes "Oh...!";
 		mes "Is this from my sister?";
@@ -193,6 +321,269 @@ OnPCLoadMapEvent:
 	if(strcharinfo(3) == strnpcinfo(4)){
 		if(questprogress(29995) == 1){
 			showevent QTYPE_QUEST2;
+			end;
+		}
+	}
+}
+
+// ========================================================= //
+// -                         Warps                           //
+// ========================================================= //
+moc_para01,57,27,0	script	#warp_2_pub	WARPNPC,1,1,{
+OnTouch:
+	if(countitem(Para_Team_Mark) > 0){
+		if(questprogress(29997) == 2){
+			eden_para_warp = 1;
+		}
+		warp "moc_para01",162,26;
+		end;
+	}
+
+OnEdenWarp_L1:
+	showevent QTYPE_QUEST;
+	end;
+	
+OnPCLoadMapEvent:
+	if(strcharinfo(3) == strnpcinfo(4)){
+		if(questprogress(29997) == 2) && (eden_para_warp == 0){
+			showevent QTYPE_QUEST;
+			end;
+		}
+	}
+}
+
+moc_para01,48,16,0	script	#warp_2_2f	WARPNPC,1,1,{
+OnTouch:
+	if(countitem(Para_Team_Mark) > 0){
+		if(questprogress(29997) == 2){
+			eden_para_warp2 = 1;
+		}
+		warp "moc_para01",48,164;
+		end;
+	}
+
+OnEdenWarp_L2:
+	showevent QTYPE_QUEST;
+	end;
+	
+OnPCLoadMapEvent:
+	if(strcharinfo(3) == strnpcinfo(4)){
+		if(questprogress(29997) == 2) && (eden_para_warp2 == 0){
+			showevent QTYPE_QUEST;
+			end;
+		}
+	}
+}
+
+moc_para01,48,39,0	script	#warp_2_eqp_room	WARPNPC,1,1,{
+OnTouch:
+	if(countitem(Para_Team_Mark) > 0){
+		if(questprogress(29997) == 2){
+			eden_para_warp3 = 1;
+		}
+		warp "moc_para01",106,14;
+		end;
+	}
+
+OnEdenWarp_L3:
+	showevent QTYPE_QUEST;
+	end;
+	
+OnPCLoadMapEvent:
+	if(strcharinfo(3) == strnpcinfo(4)){
+		if(questprogress(29997) == 2) && (eden_para_warp3 == 0){
+			showevent QTYPE_QUEST;
+			end;
+		}
+	}
+}
+
+moc_para01,100,27,0	script	#warp_2_gym	WARPNPC,1,1,{
+OnTouch:
+	if(countitem(Para_Team_Mark) > 0){
+		if(questprogress(29997) == 2){
+			eden_para_warp4 = 1;
+		}
+		warp "moc_para01",47,85;
+		end;
+	}
+	
+OnEdenWarp_L4:
+	showevent QTYPE_QUEST;
+	end;
+	
+OnPCLoadMapEvent:
+	if(strcharinfo(3) == strnpcinfo(4)){
+		if(questprogress(29997) == 2) && (eden_para_warp4 == 0){
+			showevent QTYPE_QUEST;
+			end;
+		}
+	}
+}
+
+moc_para01,113,32,0	script	#warp_2_ware	WARPNPC,1,1,{
+OnTouch:
+	if(countitem(Para_Team_Mark) > 0){
+		if(questprogress(29997) == 2){
+			eden_para_warp5 = 1;
+		}
+		warp "moc_para01",105,92;
+		end;
+	}
+
+OnEdenWarp_L5:
+	showevent QTYPE_QUEST;
+	end;
+	
+OnPCLoadMapEvent:
+	if(strcharinfo(3) == strnpcinfo(4)){
+		if(questprogress(29997) == 2) && (eden_para_warp5 == 0){
+			showevent QTYPE_QUEST;
+			end;
+		}
+	}
+}
+
+moc_para01,41,187,0	script	#warp_2_room2	WARPNPC,1,1,{
+OnTouch:
+	if(countitem(Para_Team_Mark) > 0){
+		if(questprogress(29997) == 2){
+			eden_para_warp6 = 1;
+		}
+		warp "moc_para01",179,93;
+		end;
+	}
+	
+OnEdenWarp_L6:
+	showevent QTYPE_QUEST;
+	end;
+	
+OnPCLoadMapEvent:
+	if(strcharinfo(3) == strnpcinfo(4)){
+		if(questprogress(29997) == 2) && (eden_para_warp6 == 0){
+			showevent QTYPE_QUEST;
+			end;
+		}
+	}
+}
+
+moc_para01,158,26,0	warp	#warp_2_din_1	1,1,moc_para01,55,27
+moc_para01,47,161,0	warp	#warp_2_1f	1,1,moc_para01,48,20
+moc_para01,107,12,0	warp	#warp_2_din_2	1,1,moc_para01,47,37
+moc_para01,49,86,0	warp	#warp_2_pass_1	1,1,moc_para01,103,27
+moc_para01,102,92,0	warp	#warp_2_pass_2	1,1,moc_para01,109,33
+moc_para01,179,90,0	warp	#warp_2_2fhall_3	1,1,moc_para01,41,185
+
+// Prontera Castle (Eden Quest)
+prontera,156,360,0	script	#prt005	WARPNPC,4,2,{
+
+OnTouch:
+	if(questprogress(29995) == 1){
+		eden_warp_q = 1;
+	}
+	doevent "#prtca02::OnWarpQuest2";
+	warp "prt_castle",102,20;
+	end;
+	
+OnWarpQuest:
+	showevent QTYPE_QUEST;
+	end;
+	
+OnPCLoadMapEvent:
+	if(strcharinfo(3) == strnpcinfo(4)){
+		if(questprogress(29995) == 1) && (eden_warp_q == 0){
+			showevent QTYPE_QUEST;
+			end;
+		}
+	}
+}
+
+prt_castle,102,73,0	script	#prtca02	WARPNPC,3,2,{
+
+OnTouch:
+	if(questprogress(29995) == 1){
+		eden_warp_q2 = 1;
+	}
+	doevent "#prtca03::OnWarpQuest3";
+	warp "prt_castle",102,91;
+	end;
+
+OnWarpQuest2:
+	showevent QTYPE_QUEST;
+	end;
+	
+OnPCLoadMapEvent:
+	if(strcharinfo(3) == strnpcinfo(4)){
+		if(questprogress(29995) == 1) && (eden_warp_q2 == 0){
+			showevent QTYPE_QUEST;
+			end;
+		}
+	}
+}
+
+prt_castle,113,107,0	script	#prtca03	WARPNPC,2,3,{
+
+OnTouch:
+	if(questprogress(29995) == 1){
+		eden_warp_q3 = 1;
+	}
+	doevent "#prtca06::OnWarpQuest4";
+	warp "prt_castle",134,107;
+	end;
+	
+OnWarpQuest3:
+	showevent QTYPE_QUEST;
+	end;
+	
+OnPCLoadMapEvent:
+	if(strcharinfo(3) == strnpcinfo(4)){
+		if(questprogress(29995) == 1) && (eden_warp_q3 == 0){
+			showevent QTYPE_QUEST;
+			end;
+		}
+	}
+}
+
+prt_castle,149,113,0	script	#prtca06	WARPNPC,1,1,{
+
+OnTouch:
+	if(questprogress(29995) == 1){
+		eden_warp_q4 = 1;
+	}
+	doevent "#prtca07-1::OnWarpQuest5";
+	warp "prt_castle",175,113;
+	end;
+	
+OnWarpQuest4:
+	showevent QTYPE_QUEST;
+	end;
+	
+OnPCLoadMapEvent:
+	if(strcharinfo(3) == strnpcinfo(4)){
+		if(questprogress(29995) == 1) && (eden_warp_q4 == 0){
+			showevent QTYPE_QUEST;
+			end;
+		}
+	}
+}
+
+prt_castle,176,121,0	script	#prtca07-1	WARPNPC,3,2,{
+
+OnTouch:
+	if(questprogress(29995) == 1){
+		eden_warp_q4 = 1;
+	}
+	warp "prt_castle",170,141;
+	end;
+	
+OnWarpQuest5:
+	showevent QTYPE_QUEST;
+	end;
+	
+OnPCLoadMapEvent:
+	if(strcharinfo(3) == strnpcinfo(4)){
+		if(questprogress(29995) == 1) && (eden_warp_q5 == 0){
+			showevent QTYPE_QUEST;
 			end;
 		}
 	}
@@ -312,18 +703,17 @@ moc_para01,29,35,2	script	Gramps#huntquests	4_M_LGTGRAND,{
 		mes "[Gramps]";
 		mes "I'll check for all of the missions that i've given so far.";
 		next;
-		if(questprogress(30000,HUNTING) == 0 || questprogress(30000,HUNTING) == 1) close;
 		if(questprogress(30000,HUNTING) == 2){
 			erasequest 30000;
 			getexp 590000,370000;
 			close;
 		}
-		if(questprogress(30002,HUNTING) == 0 || questprogress(30002,HUNTING) == 1) close;
-		if(questprogress(30002,HUNTING) == 2){
+		else if(questprogress(30002,HUNTING) == 2){
 			erasequest 30002;
 			getexp 450000,300000;
 			close;
-		}	
+		}
+		close;
 	case 3:
 		mes "[Gramps]";
 		mes "I'll check what missions that you've taken so far.";
@@ -402,3 +792,24 @@ OnInit:
 // Lv 50-69
 t_pay_dun00,0,0,0,0	monster	Anolian	3500,150,5000,2500,0
 t_pay_dun00,0,0,0,0	monster	Merman	3501,150,5000,2500,0
+
+// Check Level
+t_pay_dun00,1,1,1	script	#Lv50-69	HIDDEN_NPC,500,500,{
+
+OnTouch:
+	if(BaseLevel < 50 || BaseLevel > 69){
+		if(getgmlevel() < 80){
+			warp "SavePoint",0,0;
+			end;
+		} else {
+			end;
+		}
+	}
+
+OnPCBaseLvUpEvent:
+	if(BaseLevel > 69){
+		warp "SavePoint",0,0;
+		end;
+	}
+}
+	

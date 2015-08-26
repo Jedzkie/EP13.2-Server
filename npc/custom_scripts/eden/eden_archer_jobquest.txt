@@ -1,0 +1,8 @@
+// - Archer Instructor
+moc_para01,14,86,5	script	Archer Instructor#para	4_M_ARCHER,{
+	end;
+
+OnInit:
+	questinfo 29002, QTYPE_JOB, 0, Job_Novice;
+	end;
+}

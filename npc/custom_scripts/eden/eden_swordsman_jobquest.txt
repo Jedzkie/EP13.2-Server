@@ -1,0 +1,48 @@
+// - Swordsman Instructor
+moc_para01,14,92,5	script	Swordsman Instructor#ed	4_M_SWORDMAN,{
+	if(Upper == 1){
+		if(Class == Job_Novice_High && (ADVJOB == Job_Lord_Knight || ADVJOB == Job_Paladin)){
+			mes "[Swordsman Instructor]";
+			mes "You've gone too far eh?";
+			mes "Just keep it up!";
+			close2;
+			emotion e_heh;
+			end;
+		}
+		else {
+			mes "[Swordsman Instructor]";
+			mes "Hm...?";
+			mes "You're a reborn";
+			mes "warrior, aren't you?";
+			next;
+			mes "[Swordsman Instructor]";
+			mes "Hmmm...";
+			mes "It seems that being";
+			mes "a Swordman is not part";
+			mes "of your destiny. I'm sorry,";
+			mes "but it seems there is nothing";
+			mes "I can do for you.";
+			close;
+		}
+	}
+	if(Class != Job_Novice){
+		mes "[Swordsman Instructor]";
+		mes "Sorry, but I only entertain Novice Job.";
+		close;
+	}
+	if(JobLevel < 10){
+		mes "[Swordsman Instructor]";
+		mes "Your job level doesn't meet my job change requirements.";
+		close;
+	}
+	if(SkillPoint > 0){
+		mes "[Swordsman Instructor]";
+		mes "Please use all your skill points before proceeding.";
+		close;
+	}
+	close;
+
+OnInit:
+	questinfo 29000, QTYPE_JOB, 0, Job_Novice, 20;
+	end;
+}

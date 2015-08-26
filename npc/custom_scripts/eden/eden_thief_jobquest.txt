@@ -1,0 +1,8 @@
+// - Thief Instructor
+moc_para01,14,77,5	script	Thief Instructor#para	4_M_THIEF_RUMIN,{
+	end;
+
+OnInit:
+	questinfo 29005, QTYPE_JOB, 0, Job_Novice;
+	end;
+}

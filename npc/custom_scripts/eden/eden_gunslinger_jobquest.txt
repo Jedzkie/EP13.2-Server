@@ -1,0 +1,8 @@
+// - Gunslinger Instructor
+moc_para01,21,97,5	script	Gunslinger Instructor#ed	4_M_GUNSLINGER,{
+	end;
+
+OnInit:
+	questinfo 29007, QTYPE_JOB, 0, Job_Novice;
+	end;
+}
