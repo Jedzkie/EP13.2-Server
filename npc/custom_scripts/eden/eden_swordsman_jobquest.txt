@@ -25,6 +25,18 @@ moc_para01,14,92,5	script	Swordsman Instructor#ed	4_M_SWORDMAN,{
 			close;
 		}
 	}
+	if(countitem(Para_Team_Mark) < 1){
+		mes "[Swordsman Instructor]";
+		mes "You are not registered in Eden Group Paradise.";
+		mes "Please talk to ^0000ffSecretary Lime Evenor^000000 first.";
+		close;
+	}
+	if(countitem(Letter_Of_Recommend) < 1){
+		mes "[Swordsman Instructor]";
+		mes "^0000ffInstructor Ur^000000 hasn't recommend you for job changing as of this moment,";
+		mes "Please talk to him first.";
+		close;
+	}
 	if(Class != Job_Novice){
 		mes "[Swordsman Instructor]";
 		mes "Sorry, but I only entertain Novice Job.";
@@ -40,9 +52,12 @@ moc_para01,14,92,5	script	Swordsman Instructor#ed	4_M_SWORDMAN,{
 		mes "Please use all your skill points before proceeding.";
 		close;
 	}
-	close;
 
-OnInit:
-	questinfo 29000, QTYPE_JOB, 0, Job_Novice, 20;
-	end;
+OnPCLoadMapEvent:
+	if(countitem(Para_Team_Mark) > 0) && (countitem(Letter_Of_Recommend) > 0){
+		if(Class == Job_Novice && JobLevel == 10){
+			showevent QTYPE_JOB;
+			end;
+		}
+	}
 }

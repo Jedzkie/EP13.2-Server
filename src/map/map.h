@@ -591,8 +591,6 @@ struct questinfo {
 	int quest_id;
 	bool hasJob;
 	unsigned short job;/* perhaps a mapid mask would be most flexible? */
-	bool hasLevel;
-	unsigned int level;
 };
 
 

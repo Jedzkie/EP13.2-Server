@@ -5652,7 +5652,7 @@ int char_config_read(const char* cfgName)
 
 			line_item = strtok(w2, ":");
 			while (line_item != NULL) {
-				int n = sv_split(line_item, strlen(line_item), 0, ',', fields, fields_length, SV_NOESCAPE_NOTERMINATE);
+				int n = sv_split(line_item, strlen(line_item), 0, ',' , fields, fields_length, SV_NOESCAPE_NOTERMINATE);
 				if(n + 1 < fields_length){
 					ShowDebug("start_items: not enough arguments for %s! Skipping...\n", line_item);
 					line_item = strtok(NULL, ":");

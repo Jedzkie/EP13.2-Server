@@ -17093,19 +17093,6 @@ BUILDIN(questinfo)
 			qi.job = (unsigned short)job;
 		}
 	}
-	
-	qi.hasLevel = false;
-	
-	if (script_hasdata(st, 6)){
-		int level = script_getnum(st, 6);
-		
-		if (level > MAX_LEVEL) {
-			ShowError("buildin_questinfo: Level exceeded maximum of %d.\n", MAX_LEVEL);
-		} else {
-			qi.hasLevel = true;
-			qi.level = (unsigned int)level;
-		}
-	}
 
 	map->add_questinfo(nd->bl.m, &qi);
 
@@ -20369,7 +20356,7 @@ void script_parse_builtin(void) {
 		BUILDIN_DEF(checkbound, "i???????"),
 
 		//Quest Log System [Inkfish]
-		BUILDIN_DEF(questinfo, "ii???"),
+		BUILDIN_DEF(questinfo, "ii??"),
 		BUILDIN_DEF(setquest, "i"),
 		BUILDIN_DEF(erasequest, "i?"),
 		BUILDIN_DEF(completequest, "i?"),
