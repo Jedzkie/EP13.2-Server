@@ -1,0 +1,24 @@
+// Turn-In Monsters
+// Lv 50-69
+t_pay_dun00,0,0,0,0	monster	Anolian	3500,150,5000,2500,0
+t_pay_dun00,0,0,0,0	monster	Merman	3501,150,5000,2500,0
+
+// Check Level
+t_pay_dun00,1,1,1	script	#Lv50-69	HIDDEN_NPC,500,500,{
+
+OnTouch:
+	if(BaseLevel < 50 || BaseLevel > 69){
+		if(getgmlevel() < 80){
+			warp "SavePoint",0,0;
+			end;
+		} else {
+			end;
+		}
+	}
+
+OnPCBaseLvUpEvent:
+	if(BaseLevel > 69){
+		warp "SavePoint",0,0;
+		end;
+	}
+}

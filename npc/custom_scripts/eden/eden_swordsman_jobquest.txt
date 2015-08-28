@@ -39,12 +39,15 @@ moc_para01,14,92,5	script	Swordsman Instructor#ed	4_M_SWORDMAN,{
 	}
 	if(Class != Job_Novice){
 		mes "[Swordsman Instructor]";
-		mes "Sorry, but I only entertain Novice Job.";
+		mes "Sorry, but I only entertain ^0000BBNovice^000000 job.";
 		close;
 	}
-	if(JobLevel < 10){
+	if (getskilllv("NV_BASIC") < 9) {
 		mes "[Swordsman Instructor]";
-		mes "Your job level doesn't meet my job change requirements.";
+		mes "Hm, you still haven't learned all of the Basic Skills. You need to do that before you can become a Swordsman.";
+		next;
+		mes "[Swordsman Instructor]";
+		mes "Check the requirements for job change again, and come back when you are ready.";
 		close;
 	}
 	if(SkillPoint > 0){
@@ -52,12 +55,113 @@ moc_para01,14,92,5	script	Swordsman Instructor#ed	4_M_SWORDMAN,{
 		mes "Please use all your skill points before proceeding.";
 		close;
 	}
+	mes "[Swordsman Instructor]";
+	mes "Welcome to the";
+	mes "Eden Swordsman Association!";
+	next;
+	mes "[Swordsman Instructor]";
+	mes "So...";
+	mes "What business";
+	mes "brings you to us?";
+	next;
+	switch(select("Job Change:About Swordsman.:About the Job requirements.:Cancel.")) {
+	case 1:
+		if (job_sword_q == 0) {
+			mes "[Swordsman Instructor]";
+			mes "So you wish to become a proud Swordsman? By all means, please sign up!";
+			next;
+			if (select("Sign up.:Nevermind.") == 1) {
+				savepoint "izlude_in",65,165;
+				job_sword_q = 1;
+				setquest 1014;
+				mes "[Swordsman Instructor]";
+				mes "Ah, yes. Your application will be reviewed as soon as possible.";
+				next;
+				mes "[Swordsman Instructor]";
+				mes "If you have already met the requirements, you can take an interview right now. Would you like to?";
+				next;
+				if (select("Yes.:No.") == 1) {
+					mes "[Swordsman Instructor]";
+					mes "Good, good.";
+					mes "Now, let's see...";
+					next;
+				}
+				else {
+					mes "[Swordsman Instructor]";
+					mes "Alright then. Feel free to come back whenever you are ready. All you ahve to do now is meet our requirements. Good luck to you.";
+					close;
+				}
+			}
+			else {
+				mes "[Swordsman Instructor]";
+				mes "Hm? Alright, come back whenever you change your mind. The world can always use another Swordsman!";
+				close;
+			}
+		}
+		if (job_sword_q <= 3) {
+			mes "Hm, you've learned all of the Basic Skills but didn't take the test yet. You must first pass the exam before you can change your job to Swordsman.";
+			next;
+			mes "[Swordsman Instructor]";
+			mes "Enter the room to my right so that you can take the test. You'll need to speak to my right so you can enter the examination area.";
+			close;
+		}
+		else if (job_sword_q == 4) {
+			mes "Hahaha! Congratulations! Now you are fully qualified to be a real Swordman! I will transform you right away!";
+			next;
+			callfunc "Job_Change",Job_Swordman;
+			job_sword_q = 0;
+			completequest 1014;
+			mes "[Swordsman Instructor]";
+			mes "Once again, congratulations. I expect that you will be a good representative of the Swordman Association.";
+			close;
+		}
+	case 2:
+		mes "[Swordsman Instructor]";
+		mes "So you wish to know more about the mighty Swordsman job? Well, then...";
+		next;
+		mes "[Swordsman Instructor]";
+		mes "Amongst the First Class jobs, the Swordman is the best melee fighter for three reasons.";
+		mes "There are 3 reasons why Swordy is the best to approch a fight!";
+		next;
+		mes "[Swordsman Instructor]";
+		mes "First, Swordman has the benefit of additional HP. Second, Swordsman generally have access to a wider selection fo weapons than the other First Class jobs.";
+		next;
+		mes "[Swordsman Instructor]";
+		mes "And third, most of the Swordsman skills are crushing physical attacks! In my opinion, being a Swordsman is the best job ever!";
+		close;
+	case 3:
+		mes "[Swordsman Instructor]";
+		mes "Hmmm...";
+		if (BaseJob != Job_Novice) {
+			if (BaseJob == Job_Swordman)
+				mes "But there's no need to tell you the requirements. You've met them and already became a Swordsman! Well, anyway...";
+			else
+				mes "It's too late for you to become a Swordsman. You already have another job. Still, there's no harm in telling you...";
+		}
+		next;
+		mes "[Swordsman Instructor]";
+		mes "First, you must learn all 9 of the Basic Skills. If you can't complete this requirement, you won't be able to change to any job.";
+		next;
+		mes "[Swordsman Instructor]";
+		mes "Second, you must pass the Swordsman Test. Inquire the Test Manager located in the waiting room of the Swordsman Test.";
+		next;
+		mes "[Swordsman Instructor]";
+		mes "If you can complete these 2 requirements, you can change to a Swordsman anytime you want.";
+		close;
+	case 4:
+		mes "[Swordsman Instructor]";
+		mes "Ha ha ha!";
+		mes "Ah, youth!";
+		close;
+	}
 
 OnPCLoadMapEvent:
-	if(countitem(Para_Team_Mark) > 0) && (countitem(Letter_Of_Recommend) > 0){
-		if(Class == Job_Novice && JobLevel == 10){
-			showevent QTYPE_JOB;
-			end;
+	if(strcharinfo(3) == strnpcinfo(4)){
+		if(countitem(Para_Team_Mark) > 0) && (countitem(Letter_Of_Recommend) > 0){
+			if(Class == Job_Novice && JobLevel == 10){
+				showevent QTYPE_JOB;
+				end;
+			}
 		}
 	}
 }

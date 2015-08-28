@@ -1,0 +1,204 @@
+// Gramps
+moc_para01,29,35,2	script	Gramps#huntquests	4_M_LGTGRAND,{
+	mes "[Gramps]";
+	mes "When you get to being my";
+	mes "age, you become bitter.";
+	mes "Too long I've done nothing about the monsters that roam around";
+	mes "Rune Midgard.";
+	next;
+	mes "[Gramps]";
+	mes "That's why I'm asking you wippersnappers to help";
+	mes "me hunt some monsters.";
+	mes "Will you help me, young adventurer?";
+	next;
+	switch(select("Yes, I'll help.:Reward Me!:^ff0000I want to quit hunting^000000:^0000ffCan you warp me?^000000:Can you erase the timer?:What missions are you giving?:No thanks, pops.")) {
+	case 1:
+		mes "[Gramps]";
+		mes "Ok, I've got a monster in mind that I need help exterminating.";
+		next;
+		mes "[Gramps]";
+		mes "Waddya say kid?";
+		mes "Want to hunt something for me?";
+		next;
+		switch(select("I'll hunt at Payon Cave [50-69]:I'll hunt at Turtle Dungeon [70-89]:I'll hunt at Thor's Volcano [90-99]:No thanks pops.")){
+		case 1:
+			if(BaseLevel < 50 || BaseLevel > 69){
+				mes "[Gramps]";
+				mes "Sorry, but I'm only giving this mission to Adventurers who are between level 50-69.";
+				close;
+			}
+			mes "[Gramps]";
+			mes "Ok, kid.";
+			mes "Hunt monsters at Turtle Dungeon and I can die a happy old man.";
+			next;
+			mes "[Gramps]";
+			mes "Ask me to teleport you and I will send you to a special hunting area.";
+			mes "So what do you want to hunt?";
+			next;
+			switch(select("Anolian:Merman:Cancel")){
+			case 1:
+				if(questprogress(30002,HUNTING) == 1){
+					mes "[Gramps]";
+					mes "I'm sorry but I can only give you one mission at a time in this category.";
+					close;
+				}
+				if(questprogress(30001,PLAYTIME) == 1){
+					mes "[Gramps]";
+					mes "The cooldown time of this quest hasn't been replenished yet.";
+					mes "Please come back after 2 hours.";
+					close;
+				} else if(questprogress(30000,HUNTING) == 0){
+					setquest 30000;
+					setquest 30001;
+					mes "[Gramps]";
+					mes "Tell me to warp you and I will send you to the special hunting grounds.";
+					close;
+				} else if(questprogress(30000,HUNTING) == 1){
+					mes "[Gramps]";
+					mes "You already on this mission.";
+					close;
+				} else if(questprogress(30000,HUNTING) == 2){
+					mes "[Gramps]";
+					mes "You completed this mission, talk to me again to claim your prize.";
+					close;
+				}
+			case 2:
+				if(questprogress(30000,HUNTING) == 1){
+					mes "[Gramps]";
+					mes "I'm sorry but I can only give you one mission at a time in this category.";
+					close;
+				}
+				if(questprogress(30003,PLAYTIME) == 1){
+					mes "[Gramps]";
+					mes "The cooldown time of this quest hasn't been replenished yet.";
+					mes "Please come back after 2 hours.";
+					close;
+				} else if(questprogress(30002,HUNTING) == 0){
+					setquest 30002;
+					setquest 30003;
+					mes "[Gramps]";
+					mes "Tell me to warp you and I will send you to the special hunting grounds.";
+					close;
+				} else if(questprogress(30002,HUNTING) == 1){
+					mes "[Gramps]";
+					mes "You already on this mission.";
+					close;
+				} else if(questprogress(30002,HUNTING) == 2){
+					mes "[Gramps]";
+					mes "You completed this mission, talk to me again to claim your prize.";
+					close;
+				}
+			case 3:
+				close;
+			}
+		case 2:
+			if(BaseLevel < 70 || BaseLevel > 89){
+				mes "[Gramps]";
+				mes "Sorry, but I'm only giving this mission to Adventurers who are between level 70-89.";
+				close;
+			}
+		case 3:
+			if(BaseLevel < 90 || BaseLevel > 99){
+				mes "[Gramps]";
+				mes "Sorry, but I'm only giving this mission to Adventurers who are between level 90-99.";
+				close;
+			}
+		case 4:
+			mes "[Gramps]";
+			mes "Suit yourself kid.";
+			close;
+		}
+	case 2:
+		mes "[Gramps]";
+		mes "I'll check for all of the missions that i've given so far.";
+		next;
+		if(questprogress(30000,HUNTING) == 2){
+			erasequest 30000;
+			getexp 590000,370000;
+			close;
+		}
+		else if(questprogress(30002,HUNTING) == 2){
+			erasequest 30002;
+			getexp 450000,300000;
+			close;
+		}
+		close;
+	case 3:
+		mes "[Gramps]";
+		mes "I'll check what missions that you've taken so far.";
+		mes "Tell me which one you want to quit doing.";
+		next;
+		if(questprogress(30000,HUNTING) == 1){
+			mes "[Gramps]";
+			mes "You have NOT completed the Anolian hunting mission.";
+			mes "Do you want to continue or quit?";
+			next;
+			if(select("Keep hunting.:^ff0000Get rid of my quest^000000") == 2){
+				erasequest 30000;
+				mes "[Gramps]";
+				mes "All of your records for this quest have been deleted.";
+				if(questprogress(30002,HUNTING) == 0) close;
+				if(questprogress(30002,HUNTING) == 1 || questprogress(30002,HUNTING) == 2) close2;
+			}
+			if(questprogress(30002,HUNTING) == 0) close;
+			if(questprogress(30002,HUNTING) == 1 || questprogress(30002,HUNTING) == 2) close2;
+		}
+		if(questprogress(30002,HUNTING) == 1){
+			mes "[Gramps]";
+			mes "You have NOT completed the Merman hunting mission.";
+			mes "Do you want to continue or quit?";
+			next;
+			if(select("Keep hunting.:^ff0000Get rid of my quest^000000") == 2){
+				erasequest 30002;
+				mes "[Gramps]";
+				mes "All of your records for this quest have been deleted.";
+				close2;
+				end;
+			}
+			close2;
+		}
+		close;
+	case 4:
+		mes "[Gramps]";
+		mes "Where would you like me to send you to?";
+		mes "The area I will send you to is not the normal area but a special hunting grounds.";
+		next;
+		mes "[Gramps]";
+		mes "In Addition, as long as you have the 2 hour timer active, I will still warp you to the hunting grounds area but you still have wait for the timer to expire before I can give you the hunting mission again.";
+		next;
+		switch(select("Payon Cave [50-69]:Turtle Dungeon [70-89]:Thor's Volcano [90-99]:Cancel")){
+		case 1:
+			if(BaseLevel < 50 && BaseLevel > 69){
+				mes "[Gramps]";
+				mes "You are not eligible to enter this area due to level requirements.";
+				close;
+			}
+			mes "Sending you now.";
+			close2;
+			warp "t_pay_dun00",137,136;
+			end;
+		case 2:
+			close;
+		case 3:
+			close;
+		case 4:
+			close;
+		}
+	case 5:
+		close;
+	case 6:
+		close;
+	case 7:
+		close;
+	}
+	
+OnPCLoadMapEvent:
+	if(strcharinfo(3) == strnpcinfo(4)){
+		if(BaseLevel >= 50 || BaseLevel <= 69){
+			if(questprogress(30000) == 0) || (questprogress(30002) == 0){
+				showevent QTYPE_QUEST;
+				end;
+			}
+		}
+	}	
+}
