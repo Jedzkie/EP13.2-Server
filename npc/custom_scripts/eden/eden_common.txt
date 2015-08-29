@@ -1,4 +1,4 @@
-moc_para01,27,35,5	script	Secretary Lime Evenor	4_F_EDEN_OFFICER,{
+moc_para01,26,35,5	script	Secretary Lime Evenor	4_F_EDEN_OFFICER,{
 	if (checkweight(1201,1) == 0 || (MaxWeight - Weight) < 2000) {
 		mes "- Wait a minute !! -";
 		mes "- Currently you're carrying -";
@@ -12,10 +12,10 @@ moc_para01,27,35,5	script	Secretary Lime Evenor	4_F_EDEN_OFFICER,{
 	mes "Hello. Can I help you?";
 	next;
 	while (1) {
-		switch (select("What is Eden group?:Join the Eden Group.:Search for missions.:Cancel.")) {
+		switch (select("What is ^0000BBEden Paradise Group^000000?:Join the ^0000BBEden Paradise Group^000000.:Cancel.")) {
 		case 1:
 			mes "[Lime Evenor]";
-			mes "Eden Group is a group that helps people who are suffering from distresses in Rune-Midgard.";
+			mes "^0000BBEden Paradise Group^000000 is a group that helps people who are suffering from distresses in Rune-Midgard.";
 			next;
 			mes "[Lime Evenor]";
 			mes "If people need help, we put up the case on the bulletin board and introduce it to our members who are eager to help those in need.";
@@ -34,7 +34,7 @@ moc_para01,27,35,5	script	Secretary Lime Evenor	4_F_EDEN_OFFICER,{
 				setquest 29997;
 				mes "[Lime Evenor]";
 				mes "You can be a Eden's member by simply registering with me.";
-				mes "Would you like to join Eden Group?";
+				mes "Would you like to join ^0000BBEden Paradise Group^000000?";
 				next;
 				switch (select("Yes, I want to join.:No, I don't want to join.")) {
 				case 1:
@@ -81,36 +81,24 @@ moc_para01,27,35,5	script	Secretary Lime Evenor	4_F_EDEN_OFFICER,{
 					getexp 20,20;
 					showevent QTYPE_NONE;
 					next;
+					mes "[Lime Evenor]";
+					mes "Your next thing to do is talk to the Knight beside me and He will instruct you on your desired job.";
+					setquest 29994;
+					doevent "Instructor Ur#2nd01::OnUrQuest";
 					break;
 				case 2:
 					mes "[Lime Evenor]";
-					mes "Do you still have questions about Eden Group?";
+					mes "Do you still have questions about ^0000BBEden Paradise Group^000000?";
 					next;
 					break;
 				}
 			} else {
 				mes "[Lime Evenor]";
-				mes "You are already a member of Eden Group.";
+				mes "You are already a member of ^0000BBEden Paradise Group^000000.";
 				next;
 			}
 			break;
 		case 3:
-			if (countitem(Para_Team_Mark) > 0) {
-				mes "[Lime Evenor]";
-				mes "Would like to try some missions as an Eden member?";
-				next;
-				mes "[Lime Evenor]";
-				mes "Check the right side of the bulletin board, there are various kinds of missions waiting for you.";
-				mes "Please carefully read the mission list and the qualifications and choose one of them.";
-				next;
-			}
-			else {
-				mes "[Lime Evenor]";
-				mes "You need to join Eden Group first if you want to do some missions.";
-				close;
-			}
-			break;
-		case 4:
 			mes "[Lime Evenor]";
 			mes "If you have any questions please come back again.";
 			close;
@@ -125,6 +113,58 @@ OnPCLoadMapEvent:
 			end;
 		}
 	}
+}
+
+// Instructor Ur [WIP]
+moc_para01,24,35,5	script	Instructor Ur#2nd01	4_M_KNIGHT_BLACK,{
+	mes "[Instructor Ur]";
+	if (countitem(Para_Team_Mark) < 1) {
+		mes "Hey there!";
+		mes "I see you're not one of our agents?";
+		mes "Are you interested in joining us?";
+		next;
+		mes "[Instructor Ur]";
+		mes "There are no fees to join!";
+		mes "We are brokers that send help where help is needed. More adventurers like you means more profit.";
+		next;
+		mes "[Instructor Ur]";
+		mes "If you're interested, talk to Raim.";
+		mes "Raim's a good guy.";
+		mes "Hahaha..";
+	}
+	mes "Well, I'm an instructor for ^0000BBEden Paradise Group^000000.";
+	next;
+	mes "[Instructor Ur]";
+	mes "I'm here to give you missions based on your current base level.";
+	mes "These missions are not very difficult to do.";
+	next;
+	mes "[Instructor Ur]";
+	mes "I am the senior instructor here at Eden Group.";
+	mes "What do you say are you up for the challenge?";
+	next;
+	if (select( "Not today I'm not.", "Okay, I'll try." ) == 1) {
+		mes "[Instructor Ur]";
+		mes "Really?";
+		mes "That's so sad.";
+		mes "When you finish these missions I will even give you a pretty decent reward.";
+		close;
+	}
+	mes "[Instructor Ur]";
+	mes "Yeah!";
+	mes "Ok, let me check what mission you should get ok?";
+	close;
+	
+OnPCLoadMapEvent:
+	if(strcharinfo(3) == strnpcinfo(4)){
+		if(questprogress(29994) == 1){
+			showevent QTYPE_QUEST;
+			end;
+		}
+	}
+	
+OnUrQuest:
+	showevent QTYPE_QUEST;
+	end;
 }
 
 -	script	Eden Teleport Officer#0::eto	-1,{

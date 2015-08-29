@@ -1,5 +1,11 @@
 // Gramps
 moc_para01,29,35,2	script	Gramps#huntquests	4_M_LGTGRAND,{
+	if(countitem(Para_Team_Mark) < 1){
+		mes "[Gramps]";
+		mes "You are not a member of ^0000BBEden Paradise Group^000000";
+		mes "Please register first before talking to me.";
+		close;
+	}
 	mes "[Gramps]";
 	mes "When you get to being my";
 	mes "age, you become bitter.";
@@ -194,7 +200,7 @@ moc_para01,29,35,2	script	Gramps#huntquests	4_M_LGTGRAND,{
 	
 OnPCLoadMapEvent:
 	if(strcharinfo(3) == strnpcinfo(4)){
-		if(BaseLevel >= 50 || BaseLevel <= 69){
+		if(BaseLevel > 50 && BaseLevel < 69){
 			if(questprogress(30000) == 0) || (questprogress(30002) == 0){
 				showevent QTYPE_QUEST;
 				end;
